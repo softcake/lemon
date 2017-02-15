@@ -58,10 +58,9 @@ if (project in integTestModules) {
         classDirectories = files(sourceSets.main.output)
     }
 
-    build.dependsOn jacocoMergedReport
-
+    check.finalizedBy jacocoMergedReport
 } else {
-    build.dependsOn jacocoTestReport
+    check.finalizedBy jacocoTestReport
 }
 
 

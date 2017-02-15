@@ -56,7 +56,7 @@ ext {
     generateManifest = false
     publishArtifacts = true
     checkCodeQuality = true
-    ignoreFailures = true
+    ignoreFailures = false
 }
 
 allprojects {

@@ -26,7 +26,7 @@ bintray {
     user = project.bintrayUser
     key = project.bintrayKey
     dryRun = project.isSnapshot
-    publish = false
+    publish = true
     publications = ['nebula']
 
     pkg {
@@ -35,7 +35,7 @@ bintray {
         name = project.name
         userOrg = project.bintrayUserOrg
         desc = description
-        labels = ['softcake', 'template', 'java', 'gradle']
+        labels = ['softcake', 'lemon', 'java']
         publicDownloadNumbers = true
         licenses = ['Apache-2.0']
 
@@ -52,7 +52,7 @@ bintray {
             }
 
             mavenCentralSync {
-                sync = false
+                sync = true
                 def ossUser = project.sonatypeOssUsername
                 def ossPass = project.sonatypeOssPassword
                 user = ossUser
