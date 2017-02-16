@@ -4,5 +4,16 @@
 .Use Tags
 [source,java,indent=0]
 ----
-include::{testDir}/example/DocExampleTest.java[tags=example]
+include::{testDir}/example/DemoTest.java[tags=exampleTest]
+----
+
+.Use Tags
+[source,java,indent=0]
+----
+include::{testDir}/example/Demo.java[tags=exampleTest]
+----
+.Use Tags
+[source,java,indent=0]
+----
+include::{mainDir}/example/Demo.java[tags=exampleDemo]
 ----

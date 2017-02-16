@@ -1,3 +1,53 @@
-=== chapter chapter chapter
+=== Private Constructor Tester
 
-chapter chapter chapter
+
+You need to test even private constructors of classes that must not be instantiated.
+
+For example you have such class with private constructor:
+
+
+
+
+.Use Tags
+[source,java,indent=0]
+----
+include::{mainDir}/example/Demo.java[tags=exampleDemo]
+----
+
+We need reflection to access the private Constructor.
+.Use Tags
+[source,java,indent=0]
+----
+include::{testDir}/example/DemoTest.java[tags=exampleReflection]
+----
+
+
+Solution to avoid this boilerplate:
+
+.Use Tags
+[source,java,indent=0]
+----
+include::{testDir}/example/DemoTest.java[tags=exampleLemon1]
+----
+
+To check nested classes, you must provide an Instance of enclosing class.
+See this example:
+
+.Use Tags
+[source,java,indent=0]
+----
+include::{mainDir}/example/EnclosingClass.java[tags=exampleDemoEnclosing]
+----
+
+And the solution:
+
+.Use Tags
+[source,java,indent=0]
+----
+include::{testDir}/example/DemoTest.java[tags=exampleLemon2]
+----
+
+IMPORTANT: It is not possible to test nested classes, if constructor of the enclosing class throws an exception on instantiating!
+
+
+
