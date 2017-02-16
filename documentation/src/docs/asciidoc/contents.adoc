@@ -8,14 +8,15 @@ For example you have such class with private constructor:
 
 
 
-.Use Tags
+.Demo class example
 [source,java,indent=0]
 ----
 include::{mainDir}/example/Demo.java[tags=exampleDemo]
 ----
 
 We need reflection to access the private Constructor.
-.Use Tags
+
+.Test with reflection
 [source,java,indent=0]
 ----
 include::{testDir}/example/DemoTest.java[tags=exampleReflection]
@@ -24,7 +25,7 @@ include::{testDir}/example/DemoTest.java[tags=exampleReflection]
 
 Solution to avoid this boilerplate:
 
-.Use Tags
+.PrivateConstructorTester
 [source,java,indent=0]
 ----
 include::{testDir}/example/DemoTest.java[tags=exampleLemon1]
@@ -33,7 +34,7 @@ include::{testDir}/example/DemoTest.java[tags=exampleLemon1]
 To check nested classes, you must provide an Instance of enclosing class.
 See this example:
 
-.Use Tags
+.Nested class example
 [source,java,indent=0]
 ----
 include::{mainDir}/example/EnclosingClass.java[tags=exampleDemoEnclosing]
@@ -41,7 +42,7 @@ include::{mainDir}/example/EnclosingClass.java[tags=exampleDemoEnclosing]
 
 And the solution:
 
-.Use Tags
+.PrivateConstructorTester and TestUtils
 [source,java,indent=0]
 ----
 include::{testDir}/example/DemoTest.java[tags=exampleLemon2]
