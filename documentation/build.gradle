@@ -20,6 +20,7 @@ description = "$rootProject.description documentation"
 dependencies {
     compile libraries.guava
     testCompile test_libraries.junit
+    testCompile project(":lemon-core")
 }
 
 apply plugin: 'org.asciidoctor.convert'
@@ -38,7 +39,7 @@ asciidoctor {
     //noinspection GroovyAssignabilityCheck
     attributes toc: 'left',
                'source-highlighter': 'highlightjs',
-               'highlightjs-theme': 'Androidstudio',
+               'highlightjs-theme': 'pojoaque',  //'solarized_light', 'monokai_sublime' railscasts, pojoaque, androidstudio
                'stylesheet': "$projectDir/src/docs/asciidoc/stylesheets/riak.css",
                icons: 'font',
                numbered: '',
