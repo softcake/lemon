@@ -32,7 +32,7 @@ gitPublish {
 task cleanGhPages(type: Delete) {
     delete "$buildDir/gitPublish"
     followSymlinks = true
-    mustRunAfter "gitPublishCommit "
+    mustRunAfter "gitPublishPush "
 }
 
 gitPublishPush.dependsOn ":documentation:asciidoctor"
