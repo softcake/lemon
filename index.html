@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.4">
+<meta name="generator" content="Asciidoctor 1.5.5">
 <meta name="author" content="Rene Neubert - @softcake.org">
 <title>The Lemon Project  - User Guide &amp; Examples</title>
 <style>
@@ -749,14 +749,14 @@ table.tableblock.grid-all { -webkit-border-radius: 0; border-radius: 0; -webkit-
 #footer-text { color: #fff; text-shadow: 1px 1px 1px #333; font-size: 80%; text-align: center; }
 
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
 <h1>The Lemon Project  - User Guide &amp; Examples</h1>
 <div class="details">
 <span id="author" class="author">Rene Neubert - @softcake.org</span><br>
-<span id="revnumber">version 1.0.0</span>
+<span id="revnumber">version 1.1.0</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -811,7 +811,7 @@ table.tableblock.grid-all { -webkit-border-radius: 0; border-radius: 0; -webkit-
 
 dependencies {
 
-    testCompile "org.softcake.lemon:lemon-core:1.0.0"
+    testCompile "org.softcake.lemon:lemon-core:1.1.0"
 
 }</code></pre>
 </div>
@@ -831,7 +831,7 @@ dependencies {
 <p>For example you have such class with private constructor:</p>
 </div>
 <div class="listingblock">
-<div class="title">Use Tags</div>
+<div class="title">Demo class example</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java" data-lang="java">/**
  * Demo class
@@ -854,10 +854,10 @@ public final class Demo {
 </div>
 </div>
 <div class="paragraph">
-<p>We need reflection to access the private Constructor.
-.Use Tags</p>
+<p>We need reflection to access the private Constructor.</p>
 </div>
 <div class="listingblock">
+<div class="title">Test with reflection</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java" data-lang="java">@Test
 public void constructorMustBePrivateAndThrowException_Old() {
@@ -887,7 +887,7 @@ public void constructorMustBePrivateAndThrowException_Old() {
 <p>Solution to avoid this boilerplate:</p>
 </div>
 <div class="listingblock">
-<div class="title">Use Tags</div>
+<div class="title">PrivateConstructorTester</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java" data-lang="java">@Test
 public void constructorMustBePrivateAndThrowException_New() {
@@ -904,7 +904,7 @@ public void constructorMustBePrivateAndThrowException_New() {
 See this example:</p>
 </div>
 <div class="listingblock">
-<div class="title">Use Tags</div>
+<div class="title">Nested class example</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java" data-lang="java">/**
  * enclosing class
@@ -934,7 +934,7 @@ public final class EnclosingClass {
 <p>And the solution:</p>
 </div>
 <div class="listingblock">
-<div class="title">Use Tags</div>
+<div class="title">PrivateConstructorTester and TestUtils</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java" data-lang="java">@Test
 public void constructorMustBePrivateAndThrowException() {
@@ -1001,8 +1001,8 @@ It is not possible to test nested classes, if constructor of the enclosing class
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.0<br>
-Last updated 2017-02-16 07:22:17 UTC
+Version 1.1.0<br>
+Last updated 2018-01-11 14:20:46 UTC
 </div>
 </div>
 <!--
