@@ -24,7 +24,7 @@ task cleanRoot(type: Delete) {
 
 task wrapper(type: Wrapper) {
     description = "Generates gradlew and gradlew.bat scripts"
-    gradleVersion = '3.3'
+    gradleVersion = gradle_version
     distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
 }
 
@@ -32,8 +32,8 @@ allprojects {project ->
     if (project.plugins.hasPlugin(JavaPlugin)) {
 
         tasks.withType(JavaCompile) {
-            sourceCompatibility = 1.8
-            targetCompatibility = 1.8
+            sourceCompatibility = 9
+            targetCompatibility = 9
         }
 
 
@@ -42,7 +42,7 @@ allprojects {project ->
             testLogging.exceptionFormat = 'full'
             reports {
                 html.enabled = !project.isCi
-                junitXml.destination = "$buildDir/test-results"
+                junitXml.destination(new File("$buildDir/test-results"))
             }
         }
 

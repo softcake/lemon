@@ -15,7 +15,9 @@
  */
 
 apply plugin: 'jacoco'
-
+jacoco {
+    toolVersion = tool_versions.jacoco
+}
 jacocoTestReport {
     group = "Coverage reports"
     description = 'Generate Jacoco coverage reports after running tests.'

@@ -83,7 +83,7 @@ task aggregateJar(type: Jar) {
     extension 'jar'
     dependsOn publishedModules.jar
 
-    from publishedModules.sourceSets.main.output.classesDir
+    from publishedModules.sourceSets.main.output.classesDirs
     from publishedModules.sourceSets.main.output.resourcesDir
 
 }
