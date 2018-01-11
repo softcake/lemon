@@ -54,7 +54,7 @@ subprojects { project ->
 
                         publish.finalizedBy getTasksByName("bintrayUpload", true)
                         publish.finalizedBy getTasksByName("artifactoryPublish", true)
-                        publish.finalizedBy rootProject.getTasksByName("publishGhPages", true)
+                        publish.finalizedBy rootProject.getTasksByName("gitPublishPush", true)
                         publish.finalizedBy rootProject.getTasksByName("sonarqube", true)
 
                     } else if (!project.isPullRequest && project.hasTravisSecEnv) {

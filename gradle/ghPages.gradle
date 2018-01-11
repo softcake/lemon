@@ -14,26 +14,26 @@
  * limitations under the License.
  */
 
-apply plugin: "org.ajoberstar.github-pages"
-
-githubPages {
+apply plugin: "org.ajoberstar.git-publish"
+gitPublish {
     repoUri = github.site
-    credentials {
+    /*credentials {
         username = project.ghUser
         password = project.ghPass
-    }
+    }*/
     def docDir = project(':documentation').buildDir
-    pages {
+    contents {
         from "$docDir/asciidoc/html5"
     }
+    branch = 'gh-pages'
 
 }
 
 task cleanGhPages(type: Delete) {
-    delete "$buildDir/ghpages"
+    delete "$buildDir/gitPublish"
     followSymlinks = true
-    mustRunAfter "publishGhPages"
+    mustRunAfter "gitPublishCommit "
 }
 
-prepareGhPages.dependsOn ":documentation:asciidoctor"
+gitPublishPush.dependsOn ":documentation:asciidoctor"
 
