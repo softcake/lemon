@@ -173,7 +173,7 @@ public final class PrivateConstructorTester {
     private void assertThatConstructorCorrespondRules(final Constructor<?> constructor)
             throws AssertionError {
 
-        if (constructor.isAccessible() || !Modifier.isPrivate(constructor.getModifiers())) {
+        if (!constructor.trySetAccessible() || !Modifier.isPrivate(constructor.getModifiers())) {
 
             throw new AssertionError("Constructor of " + this.clazz + " must be private");
 

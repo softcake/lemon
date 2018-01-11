@@ -21,7 +21,7 @@ package org.softcake.lemon.core.tester.exeptions;
  */
 public class PrivateConstructorTesterException extends RuntimeException {
 
-    static final long serialVersionUID = -7034897190745766939L;
+    private static final long serialVersionUID = -5296032052617673374L;
 
     /**
      * Constructs a new runtime exception with {@code null} as its

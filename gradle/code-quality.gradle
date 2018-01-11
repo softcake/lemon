@@ -47,7 +47,8 @@ findbugs {
 }
 
 tasks.withType(FindBugs) {
-    enabled = checkCodeQuality
+    //TODO JDK 9 support
+    enabled = false //checkCodeQuality
     group = qualityGroup
     excludeFilter = new File(configDir, "findbugs/exclude.xml")
     reports {
@@ -63,10 +64,11 @@ pmd {
     ruleSets = []
     toolVersion = tool_versions.pmd
     ruleSetConfig = resources.text.fromFile(new File(configDir, "pmd/rulesSets.xml"))
+    sourceSets = [sourceSets.main]
 }
 
 tasks.withType(Pmd) {
-    enabled = false //project.checkCodeQuality/
+    enabled = project.checkCodeQuality
     group = qualityGroup
     reports {
         xml.enabled = !project.isCi
