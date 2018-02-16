@@ -35,7 +35,6 @@ javadoc {
     }
     options.addStringOption('Xdoclint:html,syntax,reference', '-quiet')
     options.links('http://docs.oracle.com/javase/8/docs/api/',
-            'http://typesafehub.github.com/config/latest/api/',
             'http://google.github.io/guava/releases/21.0/api/docs/')
 }
 
