@@ -18,7 +18,19 @@ apply plugin: 'java'
 description = "Core Module"
 
 dependencies {
-    testCompile test_libraries.junit
     compile test_libraries.junit
+    testCompile test_libraries.junit
+    testCompile test_libraries.junitJupiterApi
+    testRuntime test_libraries.junitJupiterEngine
+/*
+    */
+
+
+
+    // If you also want to support JUnit 3 and JUnit 4 tests
+
+
+  //  testRuntime test_libraries.junitVintage
+
 
 }

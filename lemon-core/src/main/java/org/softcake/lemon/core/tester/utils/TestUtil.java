@@ -80,7 +80,7 @@ public final class TestUtil {
     }
 
     /**
-     * Helper method, that returns an instance for the given {@code Class}
+     * Helper method, that returns an instance for the given {@code Class}.
      *
      * @param clazz          the {@code Class} Object
      * @param parameter      the parameters for the given {@code Class} i.e. {@code new

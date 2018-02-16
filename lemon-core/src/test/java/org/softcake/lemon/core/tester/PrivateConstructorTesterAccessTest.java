@@ -102,7 +102,7 @@ public class PrivateConstructorTesterAccessTest {
 
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
 
         thrown.expect(IllegalStateException.class);
@@ -122,7 +122,7 @@ public class PrivateConstructorTesterAccessTest {
         Class<NonStaticAccessor> aClass = NonStaticAccessor.class;
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
 
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
         thrown.expect(AssertionError.class);
@@ -142,7 +142,7 @@ public class PrivateConstructorTesterAccessTest {
         Class<NonStaticAccessor> aClass = NonStaticAccessor.class;
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
         thrown.expect(AssertionError.class);
         thrown.expectMessage(CONSTRUCTOR_OF
@@ -161,7 +161,7 @@ public class PrivateConstructorTesterAccessTest {
         Class<NonStaticAccessor> aClass = NonStaticAccessor.class;
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
         thrown.expect(AssertionError.class);
         thrown.expectMessage(CONSTRUCTOR_OF
@@ -180,7 +180,7 @@ public class PrivateConstructorTesterAccessTest {
         Class<StaticAccessor> aClass = StaticAccessor.class;
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
         thrown.expect(IllegalStateException.class);
         thrown.expectMessage("For "
@@ -199,7 +199,7 @@ public class PrivateConstructorTesterAccessTest {
         Class<StaticAccessor> aClass = StaticAccessor.class;
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
         thrown.expect(AssertionError.class);
         thrown.expectMessage(CONSTRUCTOR_OF
@@ -218,7 +218,7 @@ public class PrivateConstructorTesterAccessTest {
         Class<StaticAccessor> aClass = StaticAccessor.class;
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
         thrown.expect(AssertionError.class);
         thrown.expectMessage(CONSTRUCTOR_OF
@@ -237,7 +237,7 @@ public class PrivateConstructorTesterAccessTest {
         Class<StaticAccessor> aClass = StaticAccessor.class;
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
         thrown.expect(AssertionError.class);
         thrown.expectMessage(CONSTRUCTOR_OF

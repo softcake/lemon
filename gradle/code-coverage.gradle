@@ -53,8 +53,8 @@ if (project in integTestModules) {
             xml.enabled = true
             csv.enabled = false
             html.enabled = !project.isCi
-            html.destination = file("${reporting.baseDir}/jacoco/test/html")
-            xml.destination = file("${reporting.baseDir}/jacoco/test/jacocoTestReport.xml")
+           /* html.destination = file("${reporting.baseDir}/jacoco/test/html")
+            xml.destination = file("${reporting.baseDir}/jacoco/test/jacocoTestReport.xml")*/
         }
         sourceDirectories = files(sourceSets.main.allSource.srcDirs)
         classDirectories = files(sourceSets.main.output)

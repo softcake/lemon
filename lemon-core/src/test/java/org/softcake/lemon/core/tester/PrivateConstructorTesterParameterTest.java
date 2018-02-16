@@ -64,7 +64,7 @@ public class PrivateConstructorTesterParameterTest {
 
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
 
         PrivateConstructorTester.forClass(nestedClass, enclosingInstance).expectedWithParameters(
@@ -80,7 +80,7 @@ public class PrivateConstructorTesterParameterTest {
 
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
         thrown.expect(AssertionError.class);
         thrown.expectMessage(MISMATCH_IN
@@ -112,7 +112,7 @@ public class PrivateConstructorTesterParameterTest {
 
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
         thrown.expect(AssertionError.class);
         thrown.expectMessage(aClass.toString()

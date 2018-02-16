@@ -27,7 +27,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 
-/**
+/**.
  * @author Rene Neubert.
  */
 public final class PrivateConstructorTester {
@@ -173,14 +173,14 @@ public final class PrivateConstructorTester {
     private void assertThatConstructorCorrespondRules(final Constructor<?> constructor)
             throws AssertionError {
 
-        if (!constructor.trySetAccessible() || !Modifier.isPrivate(constructor.getModifiers())) {
+        if (constructor.isAccessible() || !Modifier.isPrivate(constructor.getModifiers())) {
 
             throw new AssertionError("Constructor of " + this.clazz + " must be private");
 
         }
     }
 
-    /**
+    /**.
      * @param cause the throwable.
      */
     @SuppressWarnings("squid:S1192")
@@ -195,7 +195,7 @@ public final class PrivateConstructorTester {
         }
     }
 
-    /**
+    /**.
      * @param cause the throwable.
      */
     private void assertThatExceptionCorrespondRules(final Throwable cause) {
@@ -208,7 +208,7 @@ public final class PrivateConstructorTester {
         }
     }
 
-    /**
+    /**.
      * @param parameterTypes the constructors parameter types.
      */
     private void assertThatConstructorParametersCorrespondRules(final Class<?>[] parameterTypes) {
@@ -235,7 +235,7 @@ public final class PrivateConstructorTester {
         }
     }
 
-    /**
+    /**.
      * @author Rene Neubert.
      */
     @SuppressWarnings("squid:S2972")

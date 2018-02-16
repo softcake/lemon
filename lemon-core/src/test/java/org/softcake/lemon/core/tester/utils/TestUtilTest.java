@@ -37,7 +37,7 @@ public class TestUtilTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void testUtil_constructorTest() throws Exception {
+    public void testUtil_constructorTest() {
 
         PrivateConstructorTester.forClass(TestUtil.class).expectedExceptionType(
                 IllegalStateException.class,
@@ -45,7 +45,7 @@ public class TestUtilTest {
     }
 
     @Test
-    public void forNestedName() throws Exception {
+    public void forNestedName() {
 
     }
 
@@ -55,7 +55,7 @@ public class TestUtilTest {
         Class<NonStaticAccessor> aClass = NonStaticAccessor.class;
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
 
         String className = null;
         thrown.expect(IllegalArgumentException.class);
@@ -80,7 +80,7 @@ public class TestUtilTest {
         Class<DefaultEmpty> aClass = DefaultEmpty.class;
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         assertThat(enclosingInstance, instanceOf(DefaultEmpty.class));
     }
 
@@ -89,7 +89,7 @@ public class TestUtilTest {
 
         Class<DefaultEmpty> aClass = DefaultEmpty.class;
         thrown.expect(PrivateConstructorTesterException.class);
-        TestUtil.getEnclosingInstance(aClass, new Object[]{}, new Class[]{String.class});
+        TestUtil.getEnclosingInstance(aClass, new Object[]{}, new Class<?>[]{String.class});
     }
 
     @Test
@@ -97,8 +97,8 @@ public class TestUtilTest {
 
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage(getMessageNull("clazz"));
-        Class aClass = null;
-        TestUtil.getEnclosingInstance(aClass, new Object[]{}, new Class[]{String.class});
+        Class<?> aClass = null;
+        TestUtil.getEnclosingInstance(aClass, new Object[]{}, new Class<?>[]{String.class});
     }
 
     private String getMessageNullOrEmpty(final String parameter) {

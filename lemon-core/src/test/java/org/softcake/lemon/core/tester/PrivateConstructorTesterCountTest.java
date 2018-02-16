@@ -69,7 +69,7 @@ public class PrivateConstructorTesterCountTest {
         Class<NonStaticCount> aClass = NonStaticCount.class;
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
 
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
         thrown.expect(AssertionError.class);
@@ -85,7 +85,7 @@ public class PrivateConstructorTesterCountTest {
         Class<StaticCount> aClass = StaticCount.class;
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
         thrown.expect(AssertionError.class);
         thrown.expectMessage(UTILITY + aClass.toString() + "$" + classShortName + SHOULD_HAVE);

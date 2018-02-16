@@ -37,25 +37,30 @@ tasks.withType(Checkstyle) {
         html.enabled = !project.isCi
     }
 }
+apply plugin: "com.github.spotbugs"
 
-apply plugin: 'findbugs'
-
-findbugs {
-    effort = 'max'
-    ignoreFailures = project.ignoreFailures
+spotbugs {
+    toolVersion = '3.1.1'
+    effort = "max"
+    reportLevel = "low"
     excludeFilter = new File(configDir, "findbugs/exclude.xml")
-}
+    ignoreFailures = project.ignoreFailures
 
-tasks.withType(FindBugs) {
-    //TODO JDK 9 support
+
+}
+/*tasks.withType(com.github.spotbugs.SpotBugsTask) {
+
+*//*
     enabled = false //checkCodeQuality
     group = qualityGroup
     excludeFilter = new File(configDir, "findbugs/exclude.xml")
     reports {
         xml.enabled = false
         html.enabled = !project.isCi
-    }
-}
+    }*//*
+}*/
+
+
 
 apply plugin: 'pmd'
 

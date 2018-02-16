@@ -63,7 +63,7 @@ public class PrivateConstructorTesterExceptionTest {
 
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
 
         PrivateConstructorTester.forClass(nestedClass, enclosingInstance)
@@ -78,7 +78,7 @@ public class PrivateConstructorTesterExceptionTest {
 
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
 
         PrivateConstructorTester.forClass(nestedClass, enclosingInstance)
@@ -94,7 +94,7 @@ public class PrivateConstructorTesterExceptionTest {
 
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
 
         PrivateConstructorTester.forClass(nestedClass, enclosingInstance)
@@ -110,7 +110,7 @@ public class PrivateConstructorTesterExceptionTest {
 
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
 
         PrivateConstructorTester.forClass(nestedClass, enclosingInstance)
@@ -146,7 +146,7 @@ public class PrivateConstructorTesterExceptionTest {
 
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
         thrown.expect(AssertionError.class);
 
@@ -163,7 +163,7 @@ public class PrivateConstructorTesterExceptionTest {
 
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
         thrown.expect(AssertionError.class);
         thrown.expectMessage(MISMATCH_IN
@@ -184,7 +184,7 @@ public class PrivateConstructorTesterExceptionTest {
 
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
         thrown.expect(AssertionError.class);
         PrivateConstructorTester.forClass(nestedClass, enclosingInstance)
@@ -200,7 +200,7 @@ public class PrivateConstructorTesterExceptionTest {
 
         Object enclosingInstance = TestUtil.getEnclosingInstance(aClass,
                                                                  new Object[]{},
-                                                                 new Class[]{});
+                                                                 new Class<?>[]{});
         Class<?> nestedClass = TestUtil.forNestedName(classShortName, enclosingInstance);
         thrown.expect(AssertionError.class);
         thrown.expectMessage(MISMATCH_IN

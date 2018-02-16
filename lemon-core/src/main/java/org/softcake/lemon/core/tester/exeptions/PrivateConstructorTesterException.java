@@ -16,7 +16,7 @@
 
 package org.softcake.lemon.core.tester.exeptions;
 
-/**
+/**.
  * @author Rene Neubert.
  */
 public class PrivateConstructorTesterException extends RuntimeException {

@@ -45,11 +45,11 @@ ext {
     publishedModules = getPublishedProjects()
 
     integTestModules = publishedModules.findAll {
-        (it.name in [])
+        (it.name in ['lemon-probiere','lemon-nochmal'])
     }
 
     benchmarkModules = publishedModules.findAll {
-        (it.name in [])
+        (it.name in ['lemon-nochmal'])
     }
 
     sonarQubeModules = publishedModules
@@ -57,6 +57,8 @@ ext {
     publishArtifacts = true
     checkCodeQuality = true
     ignoreFailures = false
+    javaCompatibility = 1.8
+
 }
 
 allprojects {
@@ -91,9 +93,19 @@ subprojects { project ->
 
     if (project.plugins.hasPlugin(JavaPlugin) && file(project.projectDir).exists()) {
         dependencies {
-            provided libraries.jsr305
+           /* provided libraries.jsr305
             provided libraries.error_prone_annotations
+//            testCompile test_libraries.junit
+
+            testCompile test_libraries.junitJupiterApi
+            testRuntime test_libraries.junitJupiterEngine
+
+
+
+            // If you also want to support JUnit 3 and JUnit 4 tests
+
             testCompile test_libraries.junit
+            testRuntime test_libraries.junitVintage*/
         }
     }
 }

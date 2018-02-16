@@ -25,15 +25,15 @@ task cleanRoot(type: Delete) {
 task wrapper(type: Wrapper) {
     description = "Generates gradlew and gradlew.bat scripts"
     gradleVersion = gradle_version
-    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-bin.zip"
 }
 
 allprojects {project ->
     if (project.plugins.hasPlugin(JavaPlugin)) {
 
         tasks.withType(JavaCompile) {
-            sourceCompatibility = 9
-            targetCompatibility = 9
+            sourceCompatibility = rootProject.javaCompatibility
+            targetCompatibility = rootProject.javaCompatibility
         }
 
 

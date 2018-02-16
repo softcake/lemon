@@ -19,7 +19,8 @@ subprojects { project ->
 
     if (project in publishedModules) {
         apply plugin: 'java'
-        sourceCompatibility = 9
+        apply plugin: 'org.junit.platform.gradle.plugin'
+        sourceCompatibility = rootProject.javaCompatibility
     }
 
 

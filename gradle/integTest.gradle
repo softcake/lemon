@@ -18,10 +18,15 @@ apply plugin: "idea"
 
 sourceSets {
     integTest {
-        compileClasspath += main.output + test.output
-        runtimeClasspath += main.output + test.output
-        java.srcDir file('src/integTest/java')
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/integTest/java')
+
+            integTest.runtimeClasspath += integTest.output
+        }
         resources.srcDir file('src/integTest/resources')
+
     }
 }
 
@@ -33,23 +38,26 @@ dependencies {
 }
 
 configurations {
-    integTestCompile.extendsFrom testCompile
-    integTestRuntime.extendsFrom testRuntime
+    integTestImplementation.extendsFrom testImplementation
+    integTestRuntimeOnly.extendsFrom testRuntimeOnly
+
 }
 
 idea {
     module {
-        testSourceDirs += sourceSets.integTest.java.srcDirs
+        /*testSourceDirs += sourceSets.integTest.java.srcDirs
         testSourceDirs += sourceSets.integTest.resources.srcDirs
         scopes.TEST.plus.add(configurations.integTestCompile)
-        scopes.TEST.plus.add(configurations.integTestRuntime)
+        scopes.TEST.plus.add(configurations.integTestRuntime)*/
+        testSourceDirs += file('src/integTest/java')
+        scopes.TEST.plus += [configurations.integTestRuntimeClasspath, configurations.integTestCompileClasspath]
 
     }
 }
 
 task integTest(type: Test) {
     group = "verification"
-    testClassesDir = sourceSets.integTest.output.classesDir
+    testClassesDirs += sourceSets.integTest.output.classesDirs
     classpath = sourceSets.integTest.runtimeClasspath
     outputs.upToDateWhen { false }
     mustRunAfter test

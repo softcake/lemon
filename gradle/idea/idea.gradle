@@ -1,3 +1,6 @@
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
+
 /*
  * Copyright 2017 softcake.org.
  *
@@ -112,9 +115,28 @@ void createCopyright() {
 
 
 void createCodeStyle() {
-    def codeStyleFolderPath = "${rootDir}/.idea"
+    def codeStyleFolderPath = "${rootDir}/.idea/codeStyles"
+    def codeStyleFolder = new File(codeStyleFolderPath)
 
-    def codeStyleFile = new File(codeStyleFolderPath + "/codeStyleSettings.xml")
+    if (!codeStyleFolder.exists()) {
+        codeStyleFolder.mkdirs()
+    }
+
+    def codeStyleSourcePath = "${rootDir}/gradle/idea"
+    java.nio.file.Path codeStyleSourceFile = new File(codeStyleSourcePath + "/Project.xml").toPath()
+    java.nio.file.Path codeStyleTargetFile = new File(codeStyleFolderPath + "/Project.xml").toPath()
+    Files.copy(codeStyleSourceFile, codeStyleTargetFile, StandardCopyOption.REPLACE_EXISTING)
+
+    java.nio.file.Path codeStyleConfigSourceFile = new File(codeStyleSourcePath + "/codeStyleConfig.xml").toPath()
+    java.nio.file.Path codeStyleConfigTargetFile = new File(codeStyleFolderPath + "/codeStyleConfig.xml").toPath()
+    Files.copy(codeStyleConfigSourceFile, codeStyleConfigTargetFile, StandardCopyOption.REPLACE_EXISTING)
+
+/*
+
+
+
+
+    def codeStyleFile = new File(codeStyleFolderPath + "/codeStyleConfig.xml")
 
     if (!codeStyleFile.exists()) {
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
@@ -139,7 +161,7 @@ void createCodeStyle() {
     } else {
         node.append(newCodeStyle)
     }
-    printXml(node, codeStyleFile)
+    printXml(node, codeStyleFile)*/
 }
 
 void createCheckStyle() {
@@ -161,7 +183,7 @@ void createCheckStyle() {
                         "<option name=\"configuration\">\n" +
                         "<map>\n" +
                         "<entry key=\"active-configuration\" value=\"PROJECT_RELATIVE:\$PRJ_DIR\$/config/checkstyle/softcake_checks.xml:The default softcake rules\" />\n" +
-                        "<entry key=\"checkstyle-version\" value=\"7.5\" />\n" +
+                        "<entry key=\"checkstyle-version\" value=\"7.8.2\" />\n" +
                         "<entry key=\"location-0\" value=\"CLASSPATH:/sun_checks.xml:The default Checkstyle rules\" />\n" +
                         "<entry key=\"location-1\" value=\"PROJECT_RELATIVE:\$PRJ_DIR\$/config/checkstyle/softcake_checks.xml:The default softcake rules\" />\n" +
                         "<entry key=\"property-1.basedir\" value=\"\$PROJECT_DIR\$/config/checkstyle\" />\n" +
@@ -190,7 +212,7 @@ void setupGradle() {
         findAndSet("distributionType", node, "WRAPPED")
         findAndSet("useAutoImport", node, true)
         findAndSet("resolveModulePerSourceSet", node, true)
-
+        findAndSet("gradleJvm", node, rootProject.javaCompatibility)
         printXml(node, gradleFile)
     }
 }
@@ -226,7 +248,14 @@ void setupSonarLint(String branch) {
 
     def sonarFile = new File(sonarFolderPath + "/sonarlint.xml")
     if (!sonarFile.exists()) {
-        return
+
+
+        def codeStyleSourcePath = "${rootDir}/gradle/idea"
+        java.nio.file.Path codeStyleSourceFile = new File(codeStyleSourcePath + "/sonarlint.xml").toPath()
+        java.nio.file.Path codeStyleTargetFile = new File(sonarFolderPath + "/sonarlint.xml").toPath()
+        Files.copy(codeStyleSourceFile, codeStyleTargetFile, StandardCopyOption.REPLACE_EXISTING)
+
+
     }
     Node node = new XmlParser().parse(sonarFile)
 

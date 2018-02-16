@@ -41,7 +41,7 @@ public class PrivateConstructorTesterDefaultTest {
 
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage(getMessageNull("clazz"));
-        Class aClass = null;
+        Class<?> aClass = null;
         PrivateConstructorTester.forClass(aClass);
     }
 
@@ -50,7 +50,7 @@ public class PrivateConstructorTesterDefaultTest {
 
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage(getMessageNull("clazz"));
-        Class aClass = null;
+        Class<?> aClass = null;
         PrivateConstructorTester.forClass(aClass, null);
     }
 
@@ -69,7 +69,8 @@ public class PrivateConstructorTesterDefaultTest {
 
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage(getMessageNullOrEmpty("expectedParameters"));
-        PrivateConstructorTester.forClass(Object.class).expectedWithParameters(null);
+        Class<?>[] classes = null;
+        PrivateConstructorTester.forClass(Object.class).expectedWithParameters(classes);
     }
 
     @Test
@@ -78,13 +79,12 @@ public class PrivateConstructorTesterDefaultTest {
 
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage(getMessageNullOrEmpty("expectedParameters"));
-        Class[] classes = new Class[]{};
+        Class<?>[] classes = new Class<?>[]{};
         PrivateConstructorTester.forClass(Object.class).expectedWithParameters(classes);
     }
 
     @Test
-    public void check_expectedExceptionTypeAndExpectedWithParameters_throwsException()
-            throws ReflectiveOperationException {
+    public void check_expectedExceptionTypeAndExpectedWithParameters_throwsException() {
 
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Check an expected type of exception and parameters for an "
@@ -99,7 +99,7 @@ public class PrivateConstructorTesterDefaultTest {
         thrown.expect(PrivateConstructorTesterException.class);
         TestUtil.getEnclosingInstance(DefaultCount.class,
                                       new Object[]{true},
-                                      new Class[]{Boolean.class});
+                                      new Class<?>[]{Boolean.class});
     }
 
     private String getMessageNullOrEmpty(final String parameter) {

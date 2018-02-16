@@ -38,13 +38,12 @@
  * @see http://gradle.org/docs/current/javadoc/org/gradle/api/artifacts/dsl/DependencyHandler.html
  */
 ext {
-    gradle_version = '4.4.1'
+    gradle_version = '4.5'
     tool_versions =[
             checkstyle: '7.8.2',
             pmd: '5.5.1',
             jmh:  '1.17.3',
-            jacoco: '0.8.0'
-
+            jacoco: '0.8.0',
     ]
 
     versions = [
@@ -56,6 +55,13 @@ ext {
             hamcrest: '2.0.0.0',
             junit   : '4.12',
             mockito : '2.5.5',
+
+
+            junitVintageVersion : '4.12.3',
+
+            junitPlatformVersion: '1.0.3',
+
+            junitJupiterVersion: '5.0.3',
     ]
 
     plugin_versions = [
@@ -76,6 +82,8 @@ ext {
             nebula_publishing   : '5.1.5',
             asciidoctor         : '1.5.7',
             asciidoctorj_pdf    : '1.5.0-alpha.16',
+            spotbugs               : '1.6.0',
+            junit5                 : '1.0.3',
     ]
 
     libraries = [
@@ -90,6 +98,9 @@ ext {
             mockito : dependencies.create("org.mockito:mockito-core:${test_versions.mockito}") {
                 exclude group: 'org.hamcrest'
             },
+            junitJupiterApi: "org.junit.jupiter:junit-jupiter-api:${test_versions.junitJupiterVersion}",
+            junitJupiterEngine:"org.junit.jupiter:junit-jupiter-engine:${test_versions.junitJupiterVersion}",
+            junitVintage:"org.junit.vintage:junit-vintage-engine:${test_versions.junitVintageVersion}",
     ]
 
 
@@ -111,5 +122,7 @@ ext {
             nebula_publishing   : "com.netflix.nebula:nebula-publishing-plugin:${plugin_versions.nebula_publishing}",
             asciidoctor         : "org.asciidoctor:asciidoctor-gradle-plugin:${plugin_versions.asciidoctor}",
             asciidoctorj_pdf    : "org.asciidoctor:asciidoctorj-pdf:${plugin_versions.asciidoctorj_pdf}",
+            spotbugs            : "gradle.plugin.com.github.spotbugs:gradlePlugin:${plugin_versions.spotbugs}",
+            junit5            : "org.junit.platform:junit-platform-gradle-plugin:${plugin_versions.junit5}",
     ]
 }

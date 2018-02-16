@@ -1,6 +1,5 @@
-
 /*
- * Copyright 2017 softcake.org.
+ * Copyright 2018 softcake.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * you may not use this file except in compliance with the License.
@@ -16,7 +15,6 @@
  */
 
 /**
- *
  * @author René Neubert
  */
 package org.softcake.lemon.core.tester.utils;
