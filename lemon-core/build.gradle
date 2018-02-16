@@ -18,8 +18,8 @@ apply plugin: 'java'
 description = "Core Module"
 
 dependencies {
-    compile test_libraries.junit
-    testCompile test_libraries.junit
+    compile test_libraries.junitVintage
+    testCompile test_libraries.junitVintage
     testCompile test_libraries.junitJupiterApi
     testRuntime test_libraries.junitJupiterEngine
 /*

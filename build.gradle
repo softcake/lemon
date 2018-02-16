@@ -45,7 +45,7 @@ ext {
     publishedModules = getPublishedProjects()
 
     integTestModules = publishedModules.findAll {
-        (it.name in ['lemon-probiere','lemon-nochmal'])
+        (it.name in ['lemon-core'])
     }
 
     benchmarkModules = publishedModules.findAll {

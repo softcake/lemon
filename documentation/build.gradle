@@ -22,8 +22,8 @@ dependencies {
 //    testCompile test_libraries.junit
     testCompile project(":lemon-core")
 
-    /* testCompile test_libraries.junit
-  compile test_libraries.junit*/
+    /* testCompile test_libraries.junit*/
+  compile test_libraries.junit
     testCompile test_libraries.junitJupiterApi
     testRuntime test_libraries.junitJupiterEngine
 

@@ -35,6 +35,9 @@ dependencies {
     integTestCompile sourceSets.test.output
     integTestCompile configurations.testCompile
     integTestRuntime configurations.testRuntime
+    integTestCompile test_libraries.junitVintage
+    integTestRuntime 'org.junit.platform:junit-platform-console:1.0.3'
+
 }
 
 configurations {
@@ -54,15 +57,37 @@ idea {
 
     }
 }
+/*task integ2Test(type: junitPlatformTest) {
+    jacoco {
+        destinationFile = file("$buildDir/jacoco/intectest.exec")
+    }
+}*/
 
-task integTest(type: Test) {
+
+task integTest(type: JavaExec) {
     group = "verification"
-    testClassesDirs += sourceSets.integTest.output.classesDirs
+    dependsOn integTestClasses
+    //mustRunAfter junitPlatformTest
+    jvmArgs '-ea'
+
+    classpath = project.sourceSets.integTest.runtimeClasspath
+    main 'org.junit.platform.console.ConsoleLauncher'
+    args '--scan-class-path'
+    args "--reports-dir=$buildDir/test-results/jupiter-results"
+
+
+
+
+
+
+    /*testClassesDirs += sourceSets.integTest.output.classesDirs
     classpath = sourceSets.integTest.runtimeClasspath
     outputs.upToDateWhen { false }
-    mustRunAfter test
+    dependsOn testClasses
+    mustRunAfter junitPlatformTest*/
 
 }
+
 
 check.dependsOn(integTest)
 rootProject.tasks["sonarqube"].dependsOn check

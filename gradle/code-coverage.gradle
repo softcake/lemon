@@ -15,10 +15,21 @@
  */
 
 apply plugin: 'jacoco'
-jacoco {
-    toolVersion = tool_versions.jacoco
-}
-jacocoTestReport {
+
+afterEvaluate {
+
+   // def junitPlatformTestTask = (JavaExec) project.tasks.getByName('junitPlatformTest')
+
+    jacoco {
+        //toolVersion = tool_versions.jacoco
+        toolVersion = '0.7.9'
+
+        applyTo junitPlatformTest
+        applyTo integTest
+
+
+    }
+/*jacocoTestReport {
     group = "Coverage reports"
     description = 'Generate Jacoco coverage reports after running tests.'
     additionalSourceDirs = project.files(sourceSets.main.allSource.srcDirs)
@@ -29,48 +40,83 @@ jacocoTestReport {
         csv.enabled = false
         html.enabled = !(project in integTestModules) && !project.isCi
     }
-}
-
-
-
-
-if (project in integTestModules) {
-
-    task jacocoMerge(type: JacocoMerge) {
-        executionData test, integTest
-        onlyIf {
-            file("$buildDir/jacoco/test.exec").exists() && file(
-                    "$buildDir/jacoco/integTest.exec").exists()
-        }
-    }
-
-    task jacocoMergedReport(type: JacocoReport) {
-        group = "Coverage reports"
-        executionData jacocoMerge.destinationFile
-        dependsOn jacocoTestReport, jacocoMerge
-        mustRunAfter jacocoTestReport
-        reports {
-            xml.enabled = true
-            csv.enabled = false
-            html.enabled = !project.isCi
-           /* html.destination = file("${reporting.baseDir}/jacoco/test/html")
-            xml.destination = file("${reporting.baseDir}/jacoco/test/jacocoTestReport.xml")*/
-        }
+}*/
+   /* project.task(type: JacocoReport, "jacocoJupTestReport") {
+        executionData(junitPlatformTestTask)
+        //sourceSets(sourceSets.main)
+        additionalSourceDirs = project.files(sourceSets.main.allSource.srcDirs)
         sourceDirectories = files(sourceSets.main.allSource.srcDirs)
         classDirectories = files(sourceSets.main.output)
+
+        reports {
+            xml.enabled = true //!(project in integTestModules)
+            csv.enabled = true
+            html.enabled = true //!(project in integTestModules) && !project.isCi
+        }
+    }*/
+    jacocoTestReport {
+
+        group = "Coverage reports"
+        description = 'Generate Jacoco coverage reports after running tests.'
+      /*  additionalSourceDirs = project.files(sourceSets.main.allSource.srcDirs)
+        sourceDirectories = project.files(sourceSets.main.allSource.srcDirs)
+        classDirectories = project.files(sourceSets.main.allSource.srcDirs)*/
+        reports {
+            xml.enabled true
+            xml.destination file("${buildDir}/reports/jacoco/report.xml")
+            html.enabled = true
+
+        }
     }
-
-    check.finalizedBy jacocoMergedReport
-} else {
-    check.finalizedBy jacocoTestReport
-}
-
-
-tasks.withType(Test) { task ->
-    group = "verification"
+junitPlatformTest {
     jacoco {
-        enabled = true
+       destinationFile = file("$buildDir/jacoco/test.exec")
     }
 }
 
 
+
+
+    if (project in integTestModules) {
+
+        task jacocoMerge(type: JacocoMerge) {
+            executionData junitPlatformTest, integTest
+            onlyIf {
+                file("$buildDir/jacoco/test.exec").exists() && file(
+                        "$buildDir/jacoco/integTest.exec").exists()
+            }
+        }
+
+        task jacocoMergedReport(type: JacocoReport) {
+            group = "Coverage reports"
+            executionData jacocoMerge.destinationFile
+            dependsOn jacocoTestReport, jacocoMerge
+            mustRunAfter jacocoTestReport
+            reports {
+                xml.enabled = true
+                csv.enabled = false
+                html.enabled = !project.isCi
+                /* html.destination = file("${reporting.baseDir}/jacoco/test/html")
+            xml.destination = file("${reporting.baseDir}/jacoco/test/jacocoTestReport.xml")*/
+            }
+            sourceDirectories = files(sourceSets.main.allSource.srcDirs)
+            classDirectories = files(sourceSets.main.output)
+        }
+
+        check.finalizedBy jacocoMergedReport
+    } else {
+
+        check.dependsOn jacocoTestReport
+
+        //check.finalizedBy jacocoTestReport
+    }
+
+
+    tasks.withType(Test) { task ->
+        group = "verification"
+        jacoco {
+            enabled = true
+        }
+    }
+
+}
