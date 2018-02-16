@@ -18,7 +18,7 @@
 
 rootProject.name = "lemon"
 
-//include "documentation"
+include "documentation"
 include "lemon-core"
 
 

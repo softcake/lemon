@@ -87,7 +87,7 @@ apply from: file('gradle/convention.gradle')
 apply from: file('gradle/compile.gradle')
 apply from: file('gradle/release.gradle')
 apply from: file('gradle/sonarqube.gradle')
-//apply from: file('gradle/ghPages.gradle')
+apply from: file('gradle/ghPages.gradle')
 
 subprojects { project ->
 

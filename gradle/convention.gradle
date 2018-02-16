@@ -19,7 +19,7 @@ subprojects { project ->
 
     if (project in publishedModules) {
         apply plugin: 'java'
-       // apply plugin: 'org.junit.platform.gradle.plugin'
+        apply plugin: 'org.junit.platform.gradle.plugin'
         sourceCompatibility = rootProject.javaCompatibility
     }
 
